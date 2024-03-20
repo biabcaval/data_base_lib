@@ -3,7 +3,8 @@ from flask import Flask, render_template, jsonify, request
 import logging
 
 app = Flask(__name__)
-app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_HOST'] = 'localhost'#'0.tcp.sa.ngrok.io' 
+#app.config['MYSQL_PORT'] =  14107
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] =  "senharoot!26" #'39*72p16lf'
 app.config['MYSQL_DB'] = "banco_p1" #'biblioteca'
@@ -14,6 +15,7 @@ conexao = mysql.connector.connect(
     user=app.config['MYSQL_USER'],
     password=app.config['MYSQL_PASSWORD'],
     database=app.config['MYSQL_DB'],
+    #port=app.config['MYSQL_PORT'],
     ssl_disabled=True
 )
 
@@ -37,7 +39,7 @@ def search():
     try:
         nome_livro = request.args.get('nome_livro')
         if nome_livro!="":
-            cursor.execute('SELECT * FROM livros WHERE titulo = %s', (nome_livro,))
+            cursor.execute(cursor.execute('SELECT * FROM livros WHERE titulo LIKE %s', ("%" + nome_livro + "%",)))
             livro = cursor.fetchall()
 
             if livro:
@@ -51,7 +53,7 @@ def search():
     except mysql.connector.Error as err:
         print(f"Erro ao buscar o livro: {err}")
 
-@app.route('/api/delete', methods=['POST'])
+@app.route('/api/delete', methods=['DELETE'])
 
 
 # TA FUNCIONANDO 
@@ -66,7 +68,6 @@ def delete():
     except mysql.connector.Error as err:
         print(f"Erro ao deletar o livro: {err}")
         return jsonify(success=False, error=str(err))
-    
 
 # TA FUNCIONANDO
 

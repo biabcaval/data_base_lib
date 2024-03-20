@@ -63,7 +63,7 @@
                   <button type="button" class="btn btn-square btn-ghost" onclick="openModal({{ rows.id_livro }}, '{{ rows.autor | replace("'", "&#39;") | safe }}', '{{ rows.titulo | replace("'", "&#39;") | safe }}', '{{ rows.genero | replace("'", "&#39;") | safe }}')">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="1.8rem" viewBox="0 0 24 24"><path fill="#434242" d="M15.748 2.947a2 2 0 0 1 2.828 0l2.475 2.475a2 2 0 0 1 0 2.829L9.158 20.144l-6.38 1.076l1.077-6.38zm-.229 3.057l2.475 2.475l1.643-1.643l-2.475-2.474zm1.06 3.89l-2.474-2.475l-8.384 8.384l-.503 2.977l2.977-.502z"/></svg>
                 </button>
-                <button type="submit" class="btn btn-square btn-ghost" class="remove_btn" onclick="delete_livro('{{ rows.id_livro }}');">
+                <button type="submit" class="btn btn-square btn-ghost remove_btn" onclick="delete_livro('{{ rows.id_livro }}');">
                   <svg xmlns="http://www.w3.org/2000/svg" width="1.4rem" height="1.4rem" viewBox="0 0 16 16"><path fill="#434242" fill-rule="evenodd" d="M5.75 3V1.5h4.5V3zm-1.5 0V1a1 1 0 0 1 1-1h5.5a1 1 0 0 1 1 1v2h2.5a.75.75 0 0 1 0 1.5h-.365l-.743 9.653A2 2 0 0 1 11.148 16H4.852a2 2 0 0 1-1.994-1.847L2.115 4.5H1.75a.75.75 0 0 1 0-1.5zm-.63 1.5h8.76l-.734 9.538a.5.5 0 0 1-.498.462H4.852a.5.5 0 0 1-.498-.462z" clip-rule="evenodd"/></svg>
                 </button>
               </td>

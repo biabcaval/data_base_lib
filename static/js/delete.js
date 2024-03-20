@@ -1,7 +1,7 @@
 function delete_livro(id) {
     if(confirm("Tem certeza que deseja deletar o livro com ID: " + id + "?")) {
       fetch("/api/delete", {
-        method: "POST",
+        method: "DELETE",
         body: JSON.stringify({ id_deletado: id }),
         headers: {
           "Content-Type": "application/json"
@@ -11,7 +11,7 @@ function delete_livro(id) {
       }).then(data => {
         if (data.success) {
           alert("Livro deletado com sucesso!");
-          window.location.reload(); // Recarrega a página para atualizar a tabela
+          location.reload(); // Recarrega a página para atualizar a tabela
         } else {
           alert("Houve um erro ao deletar o livro. Por favor, tente novamente.");
         }
@@ -20,3 +20,4 @@ function delete_livro(id) {
       });
     }
   }
+
