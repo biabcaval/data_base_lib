@@ -32,6 +32,13 @@ html,body{
     overflow: hidden;
 } 
 
+#dropdown{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
 .edit_icon {
     display: inline-block;
     width: 1em;
