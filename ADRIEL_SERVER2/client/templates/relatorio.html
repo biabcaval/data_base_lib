@@ -1,0 +1,43 @@
+<html>
+    <head>
+
+    </head>
+
+    <body>
+         <script>
+            function gerar_relatorio() {
+    fetch('/api/gerar_relatorio')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        exibir_relatorio_na_tabela(data);
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        alert('Erro ao gerar o relatório.');
+    });
+}
+
+function exibir_relatorio_na_tabela(data) {
+    const tabela = document.createElement('table');
+    const cabecalho = tabela.createTHead();
+    const linha_cabecalho = cabecalho.insertRow();
+    Object.keys(data[0]).forEach(chave => {
+        const th = document.createElement('th');
+        th.textContent = chave;
+        linha_cabecalho.appendChild(th);
+    });
+    const corpo_tabela = tabela.createTBody();
+    data.forEach(item => {
+        const linha = corpo_tabela.insertRow();
+        Object.values(item).forEach(valor => {
+            const celula = linha.insertCell();
+            celula.textContent = valor;
+        });
+    });
+    document.body.appendChild(tabela);
+}
+         </script>   
+    </body>
+</html>
+

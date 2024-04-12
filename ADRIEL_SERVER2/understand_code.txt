@@ -1,0 +1,6 @@
+m resumo, a recuperação de dados segue a seguinte sequência:
+
+O usuário preenche o formulário no HTML.
+O JavaScript obtém os valores dos campos do formulário pelo name.
+O JavaScript envia esses valores para o servidor (Flask) via AJAX.
+O Flask recebe os dados do formulário com base em seus name.
