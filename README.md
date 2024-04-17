@@ -1,4 +1,4 @@
-# Projeto de Banco de Dados - Biblioteca
+# 📕: Projeto de Banco de Dados - Biblioteca
 
 ## About the project
 Nosso projeto é uma aplicação web de uma biblioteca com banco de dados MySQL, focando em operações CRUD e utilizando dados de 2 tabelas.
