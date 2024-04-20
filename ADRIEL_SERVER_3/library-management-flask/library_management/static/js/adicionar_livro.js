@@ -3,7 +3,7 @@ document.getElementById('btnAbrirModal').addEventListener('click', function() {
   });
   
 
-function enviarFormulario() { //trata a resposta do servidor
+function enviarFormulario() {
     let form = document.getElementById('addLivroForm');
     let formDataAddLivro = new FormData(form);
 
@@ -27,7 +27,7 @@ function enviarFormulario() { //trata a resposta do servidor
             closeModal(); // Fechar o modal após cadastrar o livro
             location.reload(); // Opcional: recarregar a página para ver as atualizações
         } else {
-            alert('Erro ao cadastrar o livro.');
+            alert(data.message);
         }
     })
     .catch(error => {
@@ -37,7 +37,7 @@ function enviarFormulario() { //trata a resposta do servidor
 }
 
 // so enviar o form qnd dar o click uma vez
-window.onload = function() {
+document.onload = function() {
     document.getElementById('btnSalvarLivro').addEventListener('click', function() {
         enviarFormulario();
     });
