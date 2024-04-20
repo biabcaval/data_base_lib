@@ -11,4 +11,6 @@ def create_app():
     db.init_app(app)
     app.register_blueprint(livro_routes)
 
+    app.debug = True
+
     return app

@@ -12,7 +12,7 @@ def get_db():
             host = current_app.config["DB_HOST"],
             user = current_app.config["DB_USER"],
             password = current_app.config["DB_PASSWORD"],
-            database = current_app.config["DB_NAME"],
+            db = current_app.config["DB_NAME"],
             port = current_app.config["DB_PORT"],
             ssl_disabled=True
         )
@@ -26,6 +26,8 @@ def close_db(e=None):
     if db is not None:
         # close the database 
         db.close()
+
+
 
 def init_app(app):
     app.teardown_appcontext(close_db)

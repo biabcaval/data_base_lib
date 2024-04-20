@@ -7,13 +7,30 @@ CREATE TABLE `livros` (
   PRIMARY KEY (`id_livro`)
 ) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+CREATE TABLE `alunos` (
+  `matricula` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `senha` varchar(15) NOT NULL,
+  `telefone` varchar(15) NOT NULL,
+  PRIMARY KEY (`matricula`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;  
+
 CREATE TABLE `emprestimos` (
   `id_emprestimo` int NOT NULL AUTO_INCREMENT,
-  `aluno` varchar(100) NOT NULL,
+  `id_aluno` int NOT NULL,
   `id_livro` int NOT NULL,
   `data_emprestimo` date NOT NULL,
-  `data_devolucao` date NOT NULL,
+  `data_prevista_devolucao` date NOT NULL,
+  `data_real_devolucao` date DEFAULT NULL,
+  `status` enum('emprestado','devolvido','em atraso') NOT NULL DEFAULT 'emprestado',
+  `multa` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id_emprestimo`),
   KEY `id_livro` (`id_livro`),
-  CONSTRAINT `emprestimos_ibfk_1` FOREIGN KEY (`id_livro`) REFERENCES `livros` (`id_livro`)
+  KEY `id_aluno` (`id_aluno`),
+  CONSTRAINT `emprestimos_ibfk_1` FOREIGN KEY (`id_livro`) REFERENCES `livros` (`id_livro`),
+  CONSTRAINT `emprestimos_ibfk_2` FOREIGN KEY (`id_aluno`) REFERENCES `alunos` (`matricula`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+

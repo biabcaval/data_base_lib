@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\dorie\Downloads\UFPB\P4\BD\hotel-management-flask\env"
+VIRTUAL_ENV="C:\Users\dorie\Downloads\UFPB\P4\BD\library-flask\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
