@@ -1,0 +1,7 @@
+Tasks: 
+Criar tabela de empréstimos
+Implementar operação de empréstimo contendo Nome do cliente/ id do cliente, 
+quantos livros foram emprestados, etc. 
+Tela cliente contendo os empréstimos feitos por ele e seus dados. Além disso, todo cliente vai ter um “saldo de multa” caso existam empréstimos atrasados
+Criar uma view para cada dado de aluno (filtragem horizontal).
+Criar pelo menos um stored procedure
