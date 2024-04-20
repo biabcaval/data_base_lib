@@ -13,6 +13,7 @@ def get_db():
             user = current_app.config["DB_USER"],
             password = current_app.config["DB_PASSWORD"],
             database = current_app.config["DB_NAME"],
+            port = current_app.config["DB_PORT"],
             ssl_disabled=True
         )
 

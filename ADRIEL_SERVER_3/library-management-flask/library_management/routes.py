@@ -20,18 +20,15 @@ def exibir():
     conn = None
     cursor = None
     query = "SELECT * FROM livros"
-    try:
-        conn = get_db()
-        cursor = conn.cursor(dictionary=True)
-        cursor.execute(query)
-        rows = cursor.fetchall()
-        return render_template('table.html', data=rows)
-    except Exception as e:
-        print(f"Erro ao buscar o livro: {e}")
-    finally:
-        cursor.close()
-        conn.close()
 
+    conn = get_db()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute(query)
+    rows = cursor.fetchall()
+    cursor.close()
+    return render_template('table.html', data=rows)
+
+'''
 @livro_routes.post('/api/adicionar_livro')
 def add_livro():
     conn = None
@@ -71,3 +68,4 @@ def create_post():
     )
     return redirect(url_for("livro_routes.index"))
 
+'''

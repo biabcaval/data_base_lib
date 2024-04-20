@@ -1,28 +1,19 @@
-CREATE TABLE guest (
-    id INTEGER NOT NULL AUTO_INCREMENT,
-    name VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NOT NULL,
-    PRIMARY KEY (id),
-    UNIQUE(email)
-);
+CREATE TABLE `livros` (
+  `id_livro` int NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(100) NOT NULL,
+  `autor` varchar(100) NOT NULL,
+  `genero` varchar(100) NOT NULL,
+  `disponivel` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id_livro`)
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE booking (
-    id INTEGER NOT NULL AUTO_INCREMENT,
-    check_in DATE NOT NULL,
-    check_out DATE NOT NULL,
-    guest_id INTEGER NOT NULL,
-    room_type_id INTEGER NOT NULL,
-    breakfast BOOLEAN NOT NULL,
-    airport_pickup_time TIME NULL,
-    reference_number VARCHAR(10) NOT NULL,
-    PRIMARY KEY (id),
-    UNIQUE(reference_number)
-);
-
-CREATE TABLE room_type (
-    id INTEGER NOT NULL AUTO_INCREMENT,
-    description VARCHAR(50) NOT NULL,
-    code VARCHAR(10) NOT NULL,
-    PRIMARY KEY (id),
-    UNIQUE (code)
-);
+CREATE TABLE `emprestimos` (
+  `id_emprestimo` int NOT NULL AUTO_INCREMENT,
+  `aluno` varchar(100) NOT NULL,
+  `id_livro` int NOT NULL,
+  `data_emprestimo` date NOT NULL,
+  `data_devolucao` date NOT NULL,
+  PRIMARY KEY (`id_emprestimo`),
+  KEY `id_livro` (`id_livro`),
+  CONSTRAINT `emprestimos_ibfk_1` FOREIGN KEY (`id_livro`) REFERENCES `livros` (`id_livro`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
