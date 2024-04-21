@@ -7,7 +7,7 @@ def conexao():
             user='root',
             password='39*72p16lf',
             database='biblioteca',
-            port=12185,
+            port=18446,
             ssl_disabled=True
         )
         return conexao

@@ -29,16 +29,17 @@ def exibir():
     return render_template('table.html', data=rows)
 
 
-@livro_routes.route('/api/adicionar_livro', methods=['POST'])
+@livro_routes.post('/api/adicionar_livro')
 def add_livro():
     conn = None
     cursor = None
     try:
+        dados_formulario = request.json
         conn = get_db()
         cursor = conn.cursor()
-        titulo = request.form['titulo']
-        autor = request.form['autor']
-        genero = request.form['genero']
+        titulo = dados_formulario['titulo']
+        autor = dados_formulario['autor']
+        genero = dados_formulario['genero']
         cursor.execute(
             "INSERT INTO livros (titulo,autor,genero) VALUES (%s, %s, %s)",
             (titulo, autor, genero)

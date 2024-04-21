@@ -12,6 +12,7 @@ function enviarFormulario() {
         autor: formDataAddLivro.get('autor'),
         genero: formDataAddLivro.get('genero')
     };
+    console.log(data);
 
     fetch('/api/adicionar_livro', {
         method: 'POST',
