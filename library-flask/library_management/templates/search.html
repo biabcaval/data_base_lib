@@ -1,30 +1,113 @@
-<thead>
+{% if data %}
 
-  <tr>
-    <th scope="col/" style="color: black;">id_livro</th>
-    <th scope="col" style="color: black;">Autor</th>
-    <th scope="col"style="color: black;">Título</th>
-    <th scope="col"style="color: black;">Gênero</th>
-    <th scope="col"style="color: black;">Tools</th>
+<div class="table_container">
 
-  </tr>
-</thead>
+ <table class="table" id="change" border="1">
+  <thead>
+      
+    <tr>
+      <th scope="col/" style="color: #2B3440;">id_livro</th>
+      <th scope="col" style="color: #2B3440;">Autor</th>
+      <th scope="col"style="color: #2B3440;">Título</th>
+      <th scope="col"style="color: #2B3440;">Gênero</th>
+      <th scope="col"style="color: #2B3440;">Tools</th>
 
-{% for rows in data %}
-
-<tr>
-    <td>{{rows.id_livro}}</td>
-    <td>{{rows.autor}}</td>
-    <td>{{rows.titulo}}</td>
-    <td>{{rows.genero}}</td>
-    <td>
-        <button class="btn btn-square btn-ghost" class="edit_btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="1.8rem" viewBox="0 0 24 24"><path fill="#434242" d="M15.748 2.947a2 2 0 0 1 2.828 0l2.475 2.475a2 2 0 0 1 0 2.829L9.158 20.144l-6.38 1.076l1.077-6.38zm-.229 3.057l2.475 2.475l1.643-1.643l-2.475-2.474zm1.06 3.89l-2.474-2.475l-8.384 8.384l-.503 2.977l2.977-.502z"/></svg>
+    </tr>
+  </thead>
+  <tbody id="search">
+    {% for rows in data %}
+    <tr id ='row-{{rows.id_livro}}'>
+      <form id="updateForm">
+        <td name="id_deletado">{{rows.id_livro}}</td>
+        
+        <td>{{rows.autor}}</td>
+        <td>{{rows.titulo}}</td>
+        <td>{{rows.genero}}</td>
+        <td>
+          <button type="button" class="btn btn-square btn-ghost" onclick="openModal({{ rows.id_livro }}, '{{ rows.autor | replace("'", "&#39;") | safe }}', '{{ rows.titulo | replace("'", "&#39;") | safe }}', '{{ rows.genero | replace("'", "&#39;") | safe }}')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="1.8rem" viewBox="0 0 24 24"><path fill="#2B3440" d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83l3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg> 
+          </button>
+          <button type="button" id="deleteBtn-{{ rows.id_livro }}" class="btn btn-square btn-ghost remove_btn" onclick="delete_livro('{{ rows.id_livro }}', this);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="1.8rem" viewBox="0 0 1024 1024">
+                <path fill="#2B3440" d="M864 256H736v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32m-200 0H360v-72h304z"/>
+            </svg>                
         </button>
-        <button class="btn btn-square btn-ghost" class="remove_btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="1.4rem" height="1.4rem" viewBox="0 0 16 16"><path fill="#434242" fill-rule="evenodd" d="M5.75 3V1.5h4.5V3zm-1.5 0V1a1 1 0 0 1 1-1h5.5a1 1 0 0 1 1 1v2h2.5a.75.75 0 0 1 0 1.5h-.365l-.743 9.653A2 2 0 0 1 11.148 16H4.852a2 2 0 0 1-1.994-1.847L2.115 4.5H1.75a.75.75 0 0 1 0-1.5zm-.63 1.5h8.76l-.734 9.538a.5.5 0 0 1-.498.462H4.852a.5.5 0 0 1-.498-.462z" clip-rule="evenodd"/></svg>
-        </button>
+        
       </td>
-</tr>
 
-{% endfor %}
+    </tr>
+    <!-- Modal de Atualização -->
+    <div class="modal" id="updateModal">
+      <div class="modal-box">
+        <h3 class="font-bold text-lg">Atualizar Livro</h3>
+        <form id="updateForm">
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Autor</span>
+            </label>
+            <input type="text" id="autorInput" name="autor" class="input input-bordered">
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Título</span>
+            </label>
+            <input type="text" id="tituloInput" name="titulo" class="input input-bordered">
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Gênero</span>
+            </label>
+            <input type="text" id="generoInput" name="genero" class="input input-bordered">
+          </div>
+          <input type="hidden" id="idLivroInput" name="id_livro">
+          <div class="modal-action">
+            <button type="button" onclick="updateLivro()" class="btn">Salvar</button>
+            <button type="button" onclick="closeModal()" class="btn">Fechar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    {% endfor %}
+  </tbody>
+</table>
+<!-- Modal DaisyUI para adicionar livro -->
+            <div class="modal" id="addLivroModal">
+              <div class="modal-box">
+                <h3 class="font-bold text-lg">Adicionar Livro</h3>
+                <form id="addLivroForm">
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">Autor</span>
+                    </label>
+                    <input type="text" id="autorInput" name="autor" class="input input-bordered">
+                  </div>
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">Título</span>
+                    </label>
+                    <input type="text" id="tituloInput" name="titulo" class="input input-bordered">
+                  </div>
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">Gênero</span>
+                    </label>
+                    <input type="text" id="generoInput" name="genero" class="input input-bordered">
+                  </div>
+                  <div class="modal-action">
+                    <button type="button" id="btnSalvarLivro" onclick="enviarFormulario()" class="btn">Salvar</button>
+                    <button type="button" onclick="closeModal()" class="btn">Fechar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+{% else %}
+<p>No results found.</p>
+{% endif %}
+
+<script src="static\search.js"></script>
+<script src="static\js\delete_livro.js"></script>
+<script src="static\js\update.js"></script>
+<script src="static\adicionar_livro.js"></script>
+<script src="static\js\relatorio.js"></script>
