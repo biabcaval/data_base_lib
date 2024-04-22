@@ -85,8 +85,47 @@ tr{
 
 }
 
-.table_frame{
+.login_border{
+    padding-top: 4%;
+    width: 100%;
+    height: 85%;
+    background-color: #FDF7F6;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+}
+
+.login_frame{
     
+    width: 30%;
+    height: 60%;
+    padding: 2%;
+    border-top: 8%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #F2D7D6;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    position: relative;   
+}
+.login_header{
+    position: relative;
+    input{
+        background:  #EFCAC8;
+    }
+}
+.toggletext{
+
+    position: relative;
+    top: -10px; /* Adjust this value as needed */
+
+}
+
+.table_frame{
     width: 90%;
     padding: 2%;
     border-top: 8%;
@@ -95,6 +134,8 @@ tr{
     background-color: #F2D7D6;
     border-radius: 10px;
 }
+
+
 
 tbody{
     flex: 1 1 auto;
@@ -133,6 +174,20 @@ cursor: pointer;
 background: #EBB9B7; 
 }
 
-.add_btn{
-    
+.input-login{
+    display: flex;
+    gap: 1rem;
+    padding-top: 10%;
+}
+
+.btn-login{
+    display: flex;
+    align-items: center;
+    margin-left:10%;
+    padding-top: 7%;
+}
+
+.btn-login:hover {
+
+    input{background-color: #EFCAC8;}
 }
