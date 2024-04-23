@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Biblioteca</title>
+   
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link rel="stylesheet" href="static\style.css">
+</head>
+
+<body>    
+  <div class="header-container">
+      <h1 class="HEADER">Biblioteca</h1>
+    </div>
+  <div class="main-background">
+    <div class="table_frame" >
+
+      <div class="table_border">
+
+        
+        <div class="h1_repbtn_container" style="display: flex;">
+              
+          <details class="dropdown">
+            <summary class="m-1 btn btn-neutral">Tabelas</summary>
+            <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+              <li><a>Dados</a></li>
+              <li><a>Empréstimos</a></li>
+            </ul>
+          </details>
+
+          <button class="btn btn-ghost" onclick = "gerar_relatorio();" style="margin-bottom: 25px;"><svg xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="1.8rem" viewBox="0 0 24 24"><path fill="#2B3440" d="m20 8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM9 19H7v-9h2zm4 0h-2v-6h2zm4 0h-2v-3h2zM14 9h-1V4l5 5z"/></svg>
+          </button>
+        </div>
+
+        <div class="infos_aluno">
+        <div class="bg-labels" ><h2 style="font-size: 1.5rem;">Nome</h2></div>
+        <!--colocar as infos do aluno-->
+
+        <div class="bg-labels"><h2 style="font-size: 1.5rem;">Matrícula</h2></div>
+        <div class="bg-labels"><h2 style="font-size: 1.5rem;">Telefone</h2></div>
+        <div class="bg-labels"><h2 style="font-size: 1.5rem;">Email</h2></div>
+        <div class="bg-labels"><h2 style="font-size: 1.5rem;">Senha</h2></div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
