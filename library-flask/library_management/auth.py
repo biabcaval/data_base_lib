@@ -40,24 +40,27 @@ def exibir_login():
     return render_template('tela_login.html')
 
 
-@auth_routes.route('/login', methods=['GET', 'POST'])
+@auth_routes.route('/login', methods=['GET'])
 def login():
+    matricula = request.args.get('matricula')
+    senha = request.args.get('senha')
 
-    conn = get_db()
-    cursor = conn.cursor(dictionary=True)
-    if request.method == 'POST':
-        matricula = request.form['matricula']
-        senha = request.form['senha']
+    #verifica se os campos de matrícula e senha foram preenchidos
+    if matricula and senha:  
+        conn = get_db()
+        cursor = conn.cursor(dictionary=True)
 
-    create_view_aluno(matricula) #cria a view do aluno
-    query = 'SELECT * FROM alunos WHERE matricula = %s AND senha = %s',(matricula,senha)
-    cursor.execute(query)
-    aluno = cursor.fetchone()
+        query = 'SELECT * FROM alunos WHERE matricula = %s AND senha = %s'
+        cursor.execute(query, (matricula, senha))
+        aluno = cursor.fetchone()
 
-    #aqui leva o aluno para a pagina de livros
-    if aluno:
-        session['matricula'] = matricula
-        return redirect(url_for('livro_routes.exibir'))
+        if aluno:
+            session['matricula'] = matricula
+            return redirect(url_for('livro_routes.exibir'))
+
+    #se os campos de matrícula e senha não forem preenchidos 
+    #ou se a autenticação falhar, renderize o formulário de login
+    return render_template('tela_login.html')
 
 @auth_routes.get('/logout')
 def logout():
