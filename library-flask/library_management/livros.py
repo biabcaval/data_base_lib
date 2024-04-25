@@ -128,3 +128,18 @@ def delete():
     finally:
         cursor.close()
 
+@livro_routes.get('/api/gerar_relatorio')
+def gerar_relatorio():
+    conn = None
+    cursor = None
+    try:
+        conn = get_db()
+        cursor = conn.cursor(dictionary=True)
+        cursor.execute('SELECT * FROM livros')
+        livros = cursor.fetchall()
+        return jsonify(livros)
+    except Exception as e:
+        print(f"Erro ao gerar o relatório: {e}")
+        return jsonify(success=False, error=str(e)), 400
+    finally:
+        cursor.close()

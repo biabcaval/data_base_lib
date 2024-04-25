@@ -1,0 +1,15 @@
+livros.py
+
+Ver se bia fez esse babado:
+<button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  Trocar Seção
+</button>
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  <a class="dropdown-item" href="{{ url_for('livro_routes.exibir') }}">Livros</a>
+  <a class="dropdown-item" href="{{ url_for('emprestimo_routes.exibir') }}">Empréstimos</a>
+</div>
+
+
+---SQL
+
+Cada aluno pode pegar emprestado no maxim
