@@ -45,6 +45,50 @@ devolver livro
 e na tabela livros, mudar o valor de 'disponivel' para 1 para o livro q ta sendo devolvido
 
 
-
-
 '''
+
+
+@emprestimo_routes.post('/exibir_tela_emprest_aluno')
+def exibir_tela_emprest_aluno():
+    conn = get_db()
+    cursor = conn.cursor(dictionary=True)
+
+    #usado para pegar com POST ao invés do GET e não deixar a informação visível na URL
+    id_aluno = request.form.get('matricula')
+    
+    #consulta para obter os empréstimos do aluno
+    query = "SELECT * FROM emprestimos WHERE id_aluno = ?"
+    cursor.execute(query, (id_aluno,))
+    emprestimos = cursor.fetchall()
+
+    cursor.close()
+
+    #renderize o template existente com os dados dos empréstimos
+    return render_template('seu_template.html', emprestimos=emprestimos)
+
+
+
+@emprestimo_routes.post('/devolver_livro')
+def devolver_livro():
+    #dados do empréstimo a ser devolvido
+    id_emprestimo = request.form.get('id_emprestimo')
+
+    #conexão com o banco
+    conn = get_db()
+    cursor = conn.cursor()
+
+    #atualizar o status do empréstimo para 'devolvido'
+    update_emprestimo_query = "UPDATE emprestimos SET status = 'devolvido', data_real_devolucao = %s WHERE id = %s"
+    cursor.execute(update_emprestimo_query, (datetime.now().strftime('%Y-%m-%d'), id_emprestimo))
+    conn.commit()
+
+    #atualizar o status de disponibilidade do livro
+    update_livro_query = "UPDATE livros SET disponivel = 1 WHERE id = (SELECT id_livro FROM emprestimos WHERE id = %s)"
+    cursor.execute(update_livro_query, (id_emprestimo,))
+    conn.commit()
+
+    cursor.close()
+    conn.close()
+
+    #redirecionar o usuário para a página de empréstimos
+    return redirect(url_for('emprestimo_routes.ver_emprestimos'))
