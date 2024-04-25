@@ -36,7 +36,7 @@ def add_livro():
     try:
         dados_formulario = request.json
         conn = get_db()
-        cursor = conn.cursor()
+        cursor = conn.cursor(dictionary=True)
         titulo = dados_formulario['titulo']
         autor = dados_formulario['autor']
         genero = dados_formulario['genero']
