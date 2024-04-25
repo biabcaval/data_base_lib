@@ -8,19 +8,53 @@ html,body{
     background-color: #F2D7D6;
 }
 
-.gradient-background {
+.main-background {
     width: 100%;
     height: 100%;
     margin: 0;
-    padding: 5rem;
-    background: linear-gradient(300deg,#F2D7D6, #F1D6D4, #EBB9B7);
+    background: #e6c2c1;
     background-size: 180% 180%;
-    animation: gradient-animation 18s ease infinite;
     display: flex;
+    flex-direction: column;
     align-items: center;
     overflow: hidden;
   }
+@font-face {
+    font-family: 'retro';
+    src: url("fonts/SoulWave-lg6Py.otf");
 
+}
+
+.bg-labels{
+    display: flex;
+    gap: 3rem;
+    .dados_exibir{
+        width: auto;
+        height: 3rem;
+        padding: 1.5% 1.5% 1.5% 1.5%;
+        line-height: 1%;
+        border-radius: 15px;
+
+    }
+}
+
+.header-container{
+    
+    background: #e6c2c1;
+}
+.HEADER{
+    font-family: 'retro';
+    font-size: 4rem;
+    color: #FDF7F6;
+    text-align: center;
+    margin: auto 0;
+    padding: 2rem 0 0 0;
+    display: block;
+    z-index: 1;
+    position: relative;
+    text-shadow: 2px 2px 4px #d4a7a5;
+
+}
 @keyframes gradient-animation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -46,6 +80,19 @@ html,body{
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M15.49 7.3h-1.16v6.35H1.67V3.28H8V2H1.67A1.21 1.21 0 0 0 .5 3.28v10.37a1.21 1.21 0 0 0 1.17 1.25h12.66a1.21 1.21 0 0 0 1.17-1.25z'/%3E%3Cpath fill='black' d='M10.56 2.87L6.22 7.22l-.44.44l-.08.08l-1.52 3.16a1.08 1.08 0 0 0 1.45 1.45l3.14-1.53l.53-.53l.43-.43l4.34-4.36l.45-.44l.25-.25a2.18 2.18 0 0 0 0-3.08a2.17 2.17 0 0 0-1.53-.63a2.19 2.19 0 0 0-1.54.63l-.7.69l-.45.44zM5.51 11l1.18-2.43l1.25 1.26zm2-3.36l3.9-3.91l1.3 1.31L8.85 9zm5.68-5.31a.91.91 0 0 1 .65.27a.93.93 0 0 1 0 1.31l-.25.24l-1.3-1.3l.25-.25a.88.88 0 0 1 .69-.25z'/%3E%3C/svg%3E");
+}
+
+.infos_aluno{
+    h2{padding-left: 25%;
+    padding-bottom: 2.5rem;
+    color: #2B3440;
+    font-family: inter;
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: #F2D7D6;
+    text-decoration-thickness: 3px;
+
+}
 }
 
 .search_bar{
@@ -128,11 +175,14 @@ tr{
 .table_frame{
     width: 90%;
     padding: 2%;
+    margin-bottom: 5%;
     border-top: 8%;
     margin-left: auto;
     margin-right: auto;
     background-color: #F2D7D6;
     border-radius: 10px;
+    display: block;
+
 }
 
 
@@ -190,4 +240,45 @@ background: #EBB9B7;
 .btn-login:hover {
 
     input{background-color: #EFCAC8;}
+}
+
+
+.vert-table-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0 auto;
+    gap: 4rem;
+    padding: 4rem;
+    padding-left: 20rem;
+   
+  }
+
+.vert-table-header {
+flex: 0 0 auto; /* Não permite que o cabeçalho cresça ou encolha */
+width: 150px; /* Largura fixa para os cabeçalhos */
+font-weight: bold;
+div{
+    padding-bottom:1rem;
+}
+}
+.vert-table-data {
+flex: 1; /* Permite que os dados cresçam para preencher o espaço restante */
+display: inline-block;
+div{
+    padding-bottom:1rem;
+}
+}
+.vert-table-data2 {
+    flex: 1; /* Permite que os dados cresçam para preencher o espaço restante */
+    display: block;
+    padding-right: 12rem;
+    div{
+        padding-bottom:1rem;
+    }
+
+}
+.vert-data-cell {
+flex: 1; /* Distribui o espaço igualmente entre as células de dados */
+padding: 8px;
 }
