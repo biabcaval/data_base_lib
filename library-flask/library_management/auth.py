@@ -36,7 +36,7 @@ def create_view_aluno(matricula):
 
 ##mostrar a pagina de login
 @auth_routes.get('/login')
-def exibir_login():
+def exibir_login(): 
     return render_template('tela_login.html')
 
 
