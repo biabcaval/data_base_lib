@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Biblioteca</title>
+   
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link rel="stylesheet" href="static\css\style.css">
+</head>
+
+<body>
+  <div class="header-container">
+    <h1 class="HEADER">Biblioteca</h1>
+  </div>
+  <div class="main-background">
+    <div class="login_frame">
+      <form action="http://127.0.0.1:5000/alunos" method="POST">
+        <div class="login_border">
+          <div class="login_header">
+            <span class="toggletext">Adm</span>
+            <input id="type_user" type="checkbox" class="toggle toggle-lg [--tglb:yellow] bg-pink-100 hover:bg-pink-100 border-pink-200" checked>
+            <span class="toggletext">Aluno</span>
+          </div>
+
+          <div class="input-info">
+            <div class="input-login">
+              <span style="padding-left: 1rem;">Matrícula</span>
+              <input id="matricula" name="matricula" type="text">
+            </div>
+            <div class="input-login">
+              <span>Senha</span>
+              <input id="senha" name="senha" type="password">
+            </div>
+
+            <div class="btn-login">
+              <input type="submit" value="Submit" class="btn btn-ghost btn-wide" />
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
