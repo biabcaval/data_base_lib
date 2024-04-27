@@ -54,6 +54,7 @@
               <th scope="col" style="color: #2B3440;">Autor</th>
               <th scope="col"style="color: #2B3440;">Título</th>
               <th scope="col"style="color: #2B3440;">Gênero</th>
+              <th scope="col"style="color: #2B3440;">Disp</th>
               <th scope="col"style="color: #2B3440;">Tools</th>
 
             </tr>
@@ -67,6 +68,7 @@
                 <td>{{rows.autor}}</td>
                 <td>{{rows.titulo}}</td>
                 <td>{{rows.genero}}</td>
+                <td>{{rows.disp}}</td>
                 <td>
                   <button type="button" class="btn btn-square btn-ghost" onclick="openModal({{ rows.id_livro }}, '{{ rows.autor | replace("'", "&#39;") | safe }}', '{{ rows.titulo | replace("'", "&#39;") | safe }}', '{{ rows.genero | replace("'", "&#39;") | safe }}')">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="1.8rem" viewBox="0 0 24 24"><path fill="#2B3440" d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83l3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>                </button>
