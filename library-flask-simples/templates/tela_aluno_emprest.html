@@ -32,11 +32,10 @@
                     <button type="submit">Dados</button>
                 </form>
             </li>
-            <form action="{{ url_for('alunos_routes.exibir_tela_livros_aluno') }}" method="post">
-                <button class="btn btn-neutral">Livros</button>  
-            </form>
             <li>
-
+              <form action="{{ url_for('alunos_routes.exibir_tela_livros_aluno') }}" method="post">
+                <button type="submit">Livros</button>  
+            </form>
             </li>
             <li>
                 <form action="{{ url_for('alunos_routes.exibir_tela_emprest_aluno') }} method="post">
@@ -63,6 +62,11 @@
               <div>status</div>
               <div>multa</div>
             </div>
+            <li>
+              <form action="">
+                  <button type="submit">Devolver</button>
+              </form>
+            </li>
             <div class="vert-table-data">
               <div class="data-cell">id_emprestimo</div>
               <div class="data-cell">id_aluno</div>

@@ -36,13 +36,13 @@ def exibir_tela_aluno():
 
 @alunos_routes.route('/emprestimos', methods=['POST'])
 def exibir_tela_emprest_aluno():
-    cursor = conn.cursor(dictionary=True)
-    matricula = session.get('matricula')
-    query = 'SELECT * FROM emprestimos WHERE id_aluno = %s'
-    cursor.execute(query, (matricula,))
-    emprestimos = cursor.fetchall()
-    cursor.close()
-    return render_template('tela_aluno_emprest.html',data=emprestimos)
+    # cursor = conn.cursor(dictionary=True)
+    # matricula = session.get('matricula')
+    # query = 'SELECT * FROM emprestimos WHERE id_aluno = %s'
+    # cursor.execute(query, (matricula,))
+    # emprestimos = cursor.fetchall()
+    # cursor.close()
+    return render_template('tela_aluno_emprest.html')#data=emprestimos
 
 
 @alunos_routes.route('/livros', methods=['POST'])
