@@ -10,28 +10,28 @@
   <link rel="stylesheet" href="static\css\style.css">
 </head>
 
-<body>
+<body class="h-screen bg-gray-100">
   <div class="header-container">
     <h1 class="HEADER">Biblioteca</h1>
   </div>
-  <div class="main-background">
-    <div class="login_frame">
+  <div class="main-background flex justify-center items-center h-full">
+    <div class="login_frame rounded-lg shadow-md w-full max-w-md mx-auto">
       <form action="http://127.0.0.1:5000/alunos" method="POST">
-        <div class="login_border">
-          <div class="login_header">
+        <div class="login_border mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 flex flex-col items-center justify-center p-4" >
+          <div class="login_header mb-4">
             <span class="toggletext">Adm</span>
             <input id="type_user" type="checkbox" class="toggle toggle-lg [--tglb:yellow] bg-pink-100 hover:bg-pink-100 border-pink-200" checked>
             <span class="toggletext">Aluno</span>
           </div>
 
-          <div class="input-info">
+          <div class="input-info w-full space-y-4">
             <div class="input-login">
               <span style="padding-left: 1rem;">Matrícula</span>
-              <input id="matricula" name="matricula" type="text">
+              <input id="matricula" name="matricula" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
             </div>
             <div class="input-login">
               <span>Senha</span>
-              <input id="senha" name="senha" type="password">
+              <input id="senha" name="senha" type="password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
             </div>
 
             <div class="btn-login">

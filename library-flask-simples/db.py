@@ -7,8 +7,8 @@ def get_db():
     db = mysql.connector.connect(
             host='localhost',#'0.tcp.sa.ngrok.io',
             user='root',
-            password='39*72p16lf', 
-            database='biblioteca',
+            password= "senharoot!26",#'39*72p16lf', 
+            database=  "banco_p1", #'biblioteca',
             #port=18446,
             ssl_disabled=True)  
     
