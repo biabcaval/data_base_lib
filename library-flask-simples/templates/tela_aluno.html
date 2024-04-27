@@ -11,7 +11,9 @@
 
 <body>    
   <div class="header-container" style="padding: 2%;">
-      <button class="btn btn-neutral" style="float: right;">Log out</button>
+    <button class="btn btn-neutral" style="float: right;">Logout</button>
+
+
       <h1 class="HEADER">Biblioteca</h1>
     </div>
   <div class="main-background">
@@ -28,12 +30,17 @@
             <summary class="m-1 btn btn-neutral">Tabelas</summary>
             <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
               <li>
-                <form action="http://127.0.0.1:5000" method="post">
+                <form action="{{ url_for('alunos_routes.exibir_tela_aluno') }}" method="post">
                     <button type="submit">Dados</button>
                 </form>
             </li>
             <li>
-                <form action="http://127.0.0.1:5000" method="post">
+                <form action="{{ url_for('alunos_routes.exibir_tela_livros_aluno') }}" method="post">
+                    <button type="submit">Livros</button>
+                </form>
+            </li>
+            <li>
+                <form action="{{ url_for('alunos_routes.exibir_tela_emprest_aluno') }}" method="post">
                     <button type="submit">Empréstimos</button>
                 </form>
             </li>

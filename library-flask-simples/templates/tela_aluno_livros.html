@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Aluno Livros</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss-dark@1.0.0/dist/tailwind-dark.min.css">
+        <link rel="stylesheet" href="static/css/styles.css">
+    </head>
+    <body>
+        <div class="header-container" style="padding:2%">
+            <button class="btn btn-neutral" style="float: right;">Log out</button>
+            <h1 class="HEADER">Biblioteca</h1>
+        </div>
+        <div class="main-background">
+            <div class="table_frame">
+                <div class="table_border">
+                    <div class="h1_repbtn_container" style="display: flex;">
+                        <details class="dropdown">
+                            <summary class="m-1 btn btn-neutral">Tabelas</summary>
+                            <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                                <li>
+                                    <form action="{{ url_for('alunos_routes.exibir_tela_aluno') }}" method="post">
+                                        <button type="submit">Dados</button>
+                                    </form>
+                                </li>
+                                
+                                <li>
+                                    <form action="/alunos/livros" method="post">
+                                        <button class="btn btn-neutral">Livros</button>
+                                    </form>
+                                </li>
+                                <li>
+                                    <form action="alunos/emprestimos" method="post">
+                                        <button class="btn btn-neutral">Empréstimos</button>
+                                    </form>
+                                </li>
+
+    </body>
+</html>

@@ -6,13 +6,13 @@
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-  <link rel="stylesheet" href="static\style.css">
+  <link rel="stylesheet" href="static\css\style.css">
 </head>
 
 <body>    
   <div class="header-container" style="padding: 2%;">
-      <button class="btn btn-neutral" style="float: right;">Log out</button>
-      <h1 class="HEADER">Biblioteca</h1>
+    <button class="btn btn-neutral" style="float: right;" type="button">Logout</button>
+    <h1 class="HEADER">Biblioteca</h1>
     </div>
   <div class="main-background">
 
@@ -28,12 +28,17 @@
             <summary class="m-1 btn btn-neutral">Tabelas</summary>
             <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
               <li>
-                <form action="http://127.0.0.1:5000/exibir_tela_aluno" method="post">
+                <form action="{{ url_for('alunos_routes.exibir_tela_aluno') }}" method="post">
                     <button type="submit">Dados</button>
                 </form>
             </li>
             <li>
-                <form action="http://127.0.0.1:5000/exibir_tela_emprest_aluno" method="post">
+              <form action="{{ url_for('alunos_routes.exibir_tela_livros_aluno') }}" method="post">
+                  <button type="submit">Livros</button>
+              </form>
+            </li>
+            <li>
+                <form action="{{ url_for('alunos_routes.exibir_tela_emprest_aluno') }}" method="post">
                     <button type="submit">Empréstimos</button>
                 </form>
             </li>
@@ -91,3 +96,18 @@
 
 </body>
 </html>
+
+
+
+<script>
+  document.getElementById('logoutButton').addEventListener('click', function() {
+      fetch("{{ url_for('auth_routes.logout') }}", {
+          method: "GET",
+          credentials: "same-origin"
+      }).then(response => {
+          if (response.redirected) {
+              window.location.href = response.url;
+          }
+      });
+  });
+</script>

@@ -1,8 +1,8 @@
-DELIMITER //
-
-CREATE PROCEDURE realizar_emprestimo(
+CREATE PROCEDURE biblioteca.realizar_emprestimo(
+    IN id_emprestimo INT,
     IN id_aluno INT,
     IN id_livro INT,
+    IN data_emprestimo DATE,
     OUT mensagem VARCHAR(100)
 )
 
@@ -16,7 +16,6 @@ BEGIN
     WHERE id_aluno = id_aluno AND status IN ('emprestado','em atraso');
 
     -- Verifica se o aluno já atingiu o limite de empréstimos
-
     IF num_emprestimos >= 2 THEN
         SET mensagem = 'O aluno já atingiu o limite de empréstimos';
     ELSE
@@ -31,8 +30,7 @@ BEGIN
             -- Inserir o novo empréstimo
             INSERT INTO emprestimos (id_emprestimo, id_aluno, id_livro, data_emprestimo, data_prevista_devolucao, status)
             VALUES (id_emprestimo, id_aluno, id_livro, data_emprestimo, DATE_ADD(data_emprestimo, INTERVAL 15 DAY), 'emprestado');
+            SET mensagem = 'Empréstimo realizado com sucesso';
         END IF;
     END IF;
-END //
-
-DELIMITER;
+END 

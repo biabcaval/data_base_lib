@@ -21,7 +21,7 @@ html,body{
   }
 @font-face {
     font-family: 'retro';
-    src: url("fonts/SoulWave-lg6Py.otf");
+    src: url("fonts/SoulWave-lg6Py.woff");
 
 }
 
@@ -241,6 +241,20 @@ background: #EBB9B7;
 
     input{background-color: #EFCAC8;}
 }
+
+.btn-logout {
+    display: flex;
+    align-items: center;
+    margin-left: 10%;
+    padding-top: 7%;
+    float: right; /* Alinha o botão à direita */
+}
+
+.btn-logout:hover {
+    background-color: #EFCAC8; /* Mudança de cor ao passar o mouse */
+    color: black; /* Mudança de cor do texto ao passar o mouse */
+}
+
 
 
 .vert-table-container {

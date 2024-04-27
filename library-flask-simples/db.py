@@ -2,15 +2,14 @@
 import mysql.connector
 
 
-
 #Conectando ao Banco de Dados
 def get_db():
     db = mysql.connector.connect(
-            host='0.tcp.sa.ngrok.io',
+            host='localhost',#'0.tcp.sa.ngrok.io',
             user='root',
             password='39*72p16lf', 
             database='biblioteca',
-            port=18446,
+            #port=18446,
             ssl_disabled=True)  
     
     if db.is_connected():
@@ -18,3 +17,4 @@ def get_db():
 
     return db
 
+print(get_db())

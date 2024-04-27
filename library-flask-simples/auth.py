@@ -58,6 +58,7 @@ def login():
 
             if aluno:
                 session['matricula'] = matricula
+                create_view_aluno(matricula)
                 return redirect(url_for('alunos.exibir_tela_aluno'))
 
         else:
@@ -67,7 +68,7 @@ def login():
 @auth_routes.get('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('auth_routes.login'))
+    return redirect(url_for('auth_routes.exibir_login'))
 
 """
 <a href="{{ url_for('auth_routes.logout') }}">Logout</a>
