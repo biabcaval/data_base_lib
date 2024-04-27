@@ -6,7 +6,7 @@
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-  <link rel="stylesheet" href="static\style.css">
+  <link rel="stylesheet" href="static\css\style.css">
 </head>
 
 <body>    
@@ -28,18 +28,18 @@
             <summary class="m-1 btn btn-neutral">Tabelas</summary>
             <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
               <li>
-                <form action="{{ url_for(alunos_routes.exibir_tela_aluno) }}" method="post">
+                <form action="{{ url_for('alunos_routes.exibir_tela_aluno') }}" method="post">
                     <button type="submit">Dados</button>
                 </form>
             </li>
-            <form action="{{ url_for(alunos_routes.exibir_tela_livros_aluno) }}" method="post">
+            <form action="{{ url_for('alunos_routes.exibir_tela_livros_aluno') }}" method="post">
                 <button class="btn btn-neutral">Livros</button>  
             </form>
             <li>
 
             </li>
             <li>
-                <form action="{{ url_for(alunos_routes.exibir_tela_emprest_aluno) }} method="post">
+                <form action="{{ url_for('alunos_routes.exibir_tela_emprest_aluno') }} method="post">
                     <button type="submit">Empréstimos</button>
                 </form>
             </li>
