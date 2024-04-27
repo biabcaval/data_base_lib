@@ -6,13 +6,13 @@
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-  <link rel="stylesheet" href="static\css\style.css">
+  <link rel="stylesheet" href="static\style.css">
 </head>
 
 <body>    
   <div class="header-container" style="padding: 2%;">
-    <button class="btn btn-neutral" style="float: right;" type="button">Logout</button>
-    <h1 class="HEADER">Biblioteca</h1>
+      <button class="btn btn-neutral" style="float: right;">Log out</button>
+      <h1 class="HEADER">Biblioteca</h1>
     </div>
   <div class="main-background">
 
@@ -28,17 +28,12 @@
             <summary class="m-1 btn btn-neutral">Tabelas</summary>
             <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
               <li>
-                <form action="{{ url_for('alunos_routes.exibir_tela_aluno') }}" method="post">
+                <form action="http://127.0.0.1:5000/exibir_tela_aluno" method="post">
                     <button type="submit">Dados</button>
                 </form>
             </li>
             <li>
-              <form action="{{ url_for('alunos_routes.exibir_tela_livros_aluno') }}" method="post">
-                  <button type="submit">Livros</button>
-              </form>
-            </li>
-            <li>
-                <form action="{{ url_for('alunos_routes.exibir_tela_emprest_aluno') }}" method="post">
+                <form action="http://127.0.0.1:5000/exibir_tela_emprest_aluno" method="post">
                     <button type="submit">Empréstimos</button>
                 </form>
             </li>
@@ -46,6 +41,8 @@
           </details>
 
           <button class="btn btn-ghost" onclick = "gerar_relatorio();" style="margin-bottom: 25px;"><svg xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="1.8rem" viewBox="0 0 24 24"><path fill="#2B3440" d="m20 8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM9 19H7v-9h2zm4 0h-2v-6h2zm4 0h-2v-3h2zM14 9h-1V4l5 5z"/></svg>
+          </button>
+          <button class="btn btn-ghost" style="margin-bottom: 25px;"><svg xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="1.8rem" viewBox="0 0 24 24"><path fill="currentColor" d="m16.5 17.25l2.86 1.69l-.75 1.22L15 18v-5h1.5zM23 17c0 3.87-3.13 7-7 7c-1.91 0-3.63-.76-4.89-2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h1v7l2.5-1.5L12 9V2h6a2 2 0 0 1 2 2v7.26c1.81 1.27 3 3.36 3 5.74m-2 0c0-2.76-2.24-5-5-5s-5 2.24-5 5s2.24 5 5 5s5-2.24 5-5"/></svg>
           </button>
         </div>
 
@@ -96,18 +93,3 @@
 
 </body>
 </html>
-
-
-
-<script>
-  document.getElementById('logoutButton').addEventListener('click', function() {
-      fetch("{{ url_for('auth_routes.logout') }}", {
-          method: "GET",
-          credentials: "same-origin"
-      }).then(response => {
-          if (response.redirected) {
-              window.location.href = response.url;
-          }
-      });
-  });
-</script>
