@@ -31,6 +31,11 @@ BEGIN
             INSERT INTO emprestimos (id_emprestimo, id_aluno, id_livro, data_emprestimo, data_prevista_devolucao, status)
             VALUES (id_emprestimo, id_aluno, id_livro, data_emprestimo, DATE_ADD(data_emprestimo, INTERVAL 15 DAY), 'emprestado');
             SET mensagem = 'Empréstimo realizado com sucesso';
+
+            -- Atualiza o status do livro
+            UPDATE livros
+            SET disponivel = 0
+            WHERE id_livro = id_livro;
         END IF;
     END IF;
 END 
