@@ -94,7 +94,9 @@ html,body{
 
 }
 }
-
+.input-info{
+    background-color: #F2D7D6;
+}
 .search_bar{
     display: flex;
     gap: 3rem;
@@ -134,33 +136,17 @@ tr{
 
 .login_border{
     padding-top: 4%;
-    width: 100%;
-    height: 85%;
+    width: 50 vw;
+    height: 50 vh;
     background-color: #FDF7F6;
     display: flex;
     flex-direction: column;
-    position: relative;
-    display: flex;
-    align-items: center;
 
 }
 
-.login_frame{
-    
-    width: 30%;
-    height: 60%;
-    padding: 2%;
-    border-top: 8%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #F2D7D6;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    position: relative;   
-}
 .login_header{
     position: relative;
+    background-color: #F2D7D6;
     input{
         background:  #EFCAC8;
     }

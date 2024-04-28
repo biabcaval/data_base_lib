@@ -30,7 +30,7 @@ def create_view_aluno(matricula):
 ##mostrar a pagina de login
 @auth_routes.get('/')
 def exibir_login(): 
-    return render_template('tela_login.html')
+    return render_template('tela_aluno_livros.html')
 
 @auth_routes.route('/', methods=['POST'])
 def login():
