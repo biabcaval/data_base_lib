@@ -16,5 +16,3 @@ def get_db():
         print(f"Conectado ao banco de dados biblioteca")
 
     return db
-
-print(get_db())

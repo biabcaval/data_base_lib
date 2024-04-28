@@ -1,5 +1,6 @@
 from db import get_db #importação da conexão
 import random
+from flask_login import login_required
 
 from flask import (
     Flask,
