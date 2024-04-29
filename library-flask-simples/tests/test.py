@@ -4,8 +4,8 @@ from datetime import date, timedelta
 # Estabeleça a conexão com o banco de dados
 conn = get_db()
 
-id_emprestimo = 1000
-matricula = 202303075
+id_emprestimo = 1015
+matricula = 202202015
 id_livro = 11
 data_emprestimo = date.today()
 data_prevista_devolucao = data_emprestimo + timedelta(days=7)
@@ -24,11 +24,25 @@ finally:
     conn.commit()
     conn.close()'''
 
-# Crie o cursor dentro do contexto da conexão
+'''# Crie o cursor dentro do contexto da conexão
 with conn.cursor() as cursor:
     # Chame o stored procedure
     cursor.callproc('realizar_emprestimo', (id_emprestimo, matricula, id_livro, data_emprestimo),'')
     print('Empréstimo realizado com sucesso!')
 
 # Faça commit das alterações no banco de dados
+conn.commit()'''
+cursor = conn.cursor()
+
+cursor.callproc("biblioteca.realizar_emprestimo", (id_emprestimo, matricula, id_livro, data_emprestimo,""))
+
+# Obter a mensagem retornada pelo procedimento armazenado
+cursor.execute("SELECT @mensagem")
+mensagem_saida = cursor.fetchone()[0]
+print("Mensagem de saída:", mensagem_saida)
+# Commitar as mudanças no banco de dados
 conn.commit()
+
+# Fechar o cursor e a conexão
+cursor.close()
+conn.close()
