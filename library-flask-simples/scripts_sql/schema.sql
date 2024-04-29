@@ -17,15 +17,15 @@ CREATE TABLE `alunos` (
   PRIMARY KEY (`matricula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+
 CREATE TABLE `emprestimos` (
-  `id_emprestimo` int NOT NULL,
+  `id_emprestimo` varchar(5) NOT NULL,
   `id_aluno` varchar(9) NOT NULL,
   `id_livro` int NOT NULL,
+  `status` enum('emprestado','devolvido') DEFAULT 'emprestado',
   `data_emprestimo` date NOT NULL,
   `data_prevista_devolucao` date NOT NULL,
   `data_real_devolucao` date DEFAULT NULL,
-  `status` enum('emprestado','devolvido','em atraso') DEFAULT 'emprestado',
-  `multa` decimal(5,2) DEFAULT '0.00',
   PRIMARY KEY (`id_emprestimo`),
   KEY `id_aluno` (`id_aluno`),
   KEY `id_livro` (`id_livro`),
