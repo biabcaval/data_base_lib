@@ -52,27 +52,41 @@
 
 
         </div>
-
+        
         <div class="infos_aluno">
-          {% for aluno in data %}
-        <div class="bg-labels" ><h2 style="font-size: 1.5rem;">Nome</h2>
-          <div class="dados_exibir" style="background-color: #F2D7D6;"><p>{{ aluno.matricula }}</p></div>
+          <div class="bg-labels">
+            <h2 style="font-size: 1.5rem;">Nome</h2>
+            <div class="dados_exibir" style="background-color: #F2D7D6;">
+              <p>{{ data.nome }}</p>
+            </div>
+          </div>
+          <div class="bg-labels">
+            <h2 style="font-size: 1.5rem;">Matrícula</h2>
+            <div class="dados_exibir" style="background-color: #F2D7D6;">
+              <p>{{ data.matricula }}</p>
+            </div>
+          </div>
+          <div class="bg-labels">
+            <h2 style="font-size: 1.5rem;">Telefone</h2>
+            <div class="dados_exibir" style="background-color: #F2D7D6;">
+              <p>{{ data.telefone }}</p>
+            </div>
+          </div>
+          <div class="bg-labels">
+            <h2 style="font-size: 1.5rem;">Email</h2>
+            <div class="dados_exibir" style="background-color: #F2D7D6;">
+              <p>{{ data.email }}</p>
+            </div>
+          </div>
+          <div class="bg-labels">
+            <h2 style="font-size: 1.5rem;">Senha</h2>
+            <div class="dados_exibir" style="background-color: #F2D7D6;">
+              <p>{{ data.senha }}</p>
+            </div>
+          </div>
         </div>
-        <div class="bg-labels"><h2 style="font-size: 1.5rem;">Matrícula</h2>
-          <div class="dados_exibir" style="background-color: #F2D7D6;"><p>123456</p></div>
-        </div>
-        <div class="bg-labels"><h2 style="font-size: 1.5rem;">Telefone</h2>
-          <div class="dados_exibir" style="background-color: #F2D7D6;"><p>(83) 981056083</p></div>
-        </div>
-        <div class="bg-labels"><h2 style="font-size: 1.5rem;">Email</h2>
-          <div class="dados_exibir" style="background-color: #F2D7D6;"><p>mariafofa123@hotmail.com</p></div>
-        </div>
-        <div class="bg-labels"><h2 style="font-size: 1.5rem;">Senha</h2>
-          <div class="dados_exibir" style="background-color: #F2D7D6;"><p>123456</p></div>
-        </div>
-        {% endfor %}
-        </div>
-
+        
+        
 
       </div>
 

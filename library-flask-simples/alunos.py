@@ -22,9 +22,7 @@ conn = get_db()
 
 @alunos_routes.route('/', methods=['GET'])
 def exibir_tela_aluno():
-
-    '''logica: toda vez q ele entrar na tela de aluno,
-    ele vai checar se tem algum empréstimo em atraso para aplicar multa''' 
+ 
     cursor = conn.cursor(dictionary=True)
     query = 'SELECT * FROM alunos WHERE matricula = %s'
     matricula = session.get('matricula')
