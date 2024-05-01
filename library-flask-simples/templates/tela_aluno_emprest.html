@@ -71,9 +71,9 @@
                         <th scope="col">id_livro</th>
                         <th scope ='col'>titulo</th>
                         <th scope="col">Aluno</th>
-                        <th scope="col">Data_Empréstimo</th>
-                        <th scope="col">Data_Prevista_Devolução</th>
-                        <th scope="col">Data_Real_Devolução</th>
+                        <th scope="col">DataEmpre</th>
+                        <th scope="col">DataPrevDev</th>
+                        <th scope="col">DataRealDev</th>
                         <th scope="col">Status</th>
                     </tr>
                 </thead>
@@ -102,7 +102,22 @@
                     
 
   {% else %}
-  <p>No results found.</p>
+  <table class="table" id="change" border="1">
+    <thead>
+        <tr>
+            <th scope="col">id_emprestimo</th>
+            <th scope="col">id_livro</th>
+            <th scope ='col'>titulo</th>
+            <th scope="col">Aluno</th>
+            <th scope="col">DataEmpre</th>
+            <th scope="col">DataPrevDev</th>
+            <th scope="col">DataRealDev</th>
+            <th scope="col">Status</th>
+        </tr>
+
+    </thead>
+
+    
   {% endif %}
 
   <!-- <script src="static\css\js\search.js"></script>

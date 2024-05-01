@@ -12,15 +12,16 @@
 </head>
 
 <body class="h-screen bg-gray-100">
-  <div class="header-container">
-    <h1 class="HEADER">Biblioteca</h1>
-  </div>
   <div class="main-background flex justify-center items-center h-full">
+    <div class="header-container">
+    <h1 class="HEADER">Biblioteca</h1>
+    </div>
     <div class="login_frame rounded-lg shadow-md w-full max-w-md mx-auto" style="background-color:#F2D7D6; padding: 3rem;">
       <form id="loginForm" action = "{{ url_for('auth_routes.login') }}" method="POST">
-          <div class="login_header mb-4" style="justify-content: center; display: flex;">
+          <div class="login_header mb-4" style="justify-content: center; display: flex; align-items: center;">
             <span class="toggletext" >Aluno</span>
-            <input id="type_user" name = "type_user" type="checkbox" class="toggle toggle-lg [--tglb:yellow] bg-pink-100 hover:bg-pink-100 border-pink-200" checked>Adm
+            <input id="type_user" name = "type_user" type="checkbox" class="toggle toggle-lg [--tglb:yellow] bg-pink-100 hover:bg-pink-100 border-pink-200" checked>
+            <span class="toggletext" >Adm</span>
           </div>
 
           <div class="input-info w-full space-y-4">

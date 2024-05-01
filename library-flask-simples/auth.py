@@ -29,8 +29,9 @@ conn = get_db()
 
 ##mostrar a pagina de login
 @auth_routes.get('/')
-def exibir_login(): 
+def exibir_login():
     return render_template('tela_login.html')
+
 
 @auth_routes.route('/', methods=['POST'])
 def login():
