@@ -12,7 +12,9 @@
 
 <body>    
   <div class="header-container" style="padding: 2%;">
-      <button class="btn btn-neutral" style="float: right;">Log out</button>
+    <form action="{{ url_for('alunos_routes.logout') }}" method="POST">
+      <button class="btn btn-neutral" type="submit">Log out</button>
+  </form>
       <h1 class="HEADER">Biblioteca</h1>
     </div>
   <div class="main-background">

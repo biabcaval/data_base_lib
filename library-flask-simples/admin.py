@@ -151,3 +151,9 @@ def gerar_relatorio():
         return flash(success=False, error=str(e)), 400
     finally:
         cursor.close()
+
+
+@admin_routes.route('/logout', methods=['POST'])
+def logout():
+    session.clear()
+    return redirect(url_for('auth_routes.exibir_login'))

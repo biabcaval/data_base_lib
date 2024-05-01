@@ -63,14 +63,5 @@ def login():
             flash('Matrícula ou senha inválidos')
             return render_template('tela_login.html')
 
-@auth_routes.get('/logout')
-def logout():
-    session.clear()
-    return redirect(url_for('auth_routes.exibir_login'))
-
-"""
-<a href="{{ url_for('auth_routes.logout') }}">Logout</a>
-"""
-
 
 

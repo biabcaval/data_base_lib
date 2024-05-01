@@ -106,7 +106,7 @@ def pesquisar_livro():
 
 
 
-@alunos_routes.route('/logout', methods=['GET'])
+@alunos_routes.route('/logout', methods=['POST'])
 def logout():
     session.clear()
     return redirect(url_for('auth_routes.exibir_login'))

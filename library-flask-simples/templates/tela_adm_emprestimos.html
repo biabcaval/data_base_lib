@@ -12,7 +12,9 @@
 
 <body>    
   <div class="header-container" style="padding: 2%;">
-      <button class="btn btn-neutral" style="float: right;">Log out</button>
+    <form action="{{ url_for('admin_routes.logout') }}" method="POST">
+      <button class="btn btn-neutral" type="submit">Log out</button>
+  </form>
       <h1 class="HEADER">Biblioteca</h1>
     </div>
   <div class="main-background">
@@ -28,18 +30,16 @@
           <details class="dropdown">
             <summary class="m-1 btn btn-neutral">Tabelas</summary>
             <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-              <li>
-                <form action="{{ url_for('alunos_routes.exibir_tela_aluno') }}" method="GET">
-                    <button type="submit">Dados</button>
-                </form>
-            </li>
             <li>
-              <form action="{{ url_for('alunos_routes.exibir_tela_livros_aluno') }}" method="GET">
+            <form action="{{ url_for('admin_routes.exibir_tela_livro_adm') }}" method="GET">
                 <button type="submit">Livros</button>  
             </form>
+          </li>
+            <li>
+
             </li>
             <li>
-                <form action="{{ url_for('alunos_routes.exibir_tela_emprest_aluno') }}" method="GET">
+                <form action="{{ url_for('admin_routes.exibir_tela_emprest_adm') }}" method="GET">
                     <button type="submit">Empréstimos</button>
                 </form>
             </li>

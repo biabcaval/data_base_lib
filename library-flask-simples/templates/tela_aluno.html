@@ -11,9 +11,10 @@
 
 <body>    
   <div class="header-container" style="padding: 2%;">
-    <form action="{{ url_for('auth_routes.logout') }}" method="GET">
-      <button class="btn btn-neutral" type="submit" style="float: right;">Log out</button>
-    </form>
+    <form action="{{ url_for('alunos_routes.logout') }}" method="POST">
+      <button class="btn btn-neutral" type="submit">Log out</button>
+  </form>
+  
       <h1 class="HEADER">Biblioteca</h1>
     </div>
   <div class="main-background">
