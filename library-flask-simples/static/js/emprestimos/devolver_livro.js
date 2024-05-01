@@ -1,4 +1,4 @@
-function fazer_emprestimo(id_emprestimo,id_livro) {
+function devolver_livro(id_emprestimo,id_livro) {
     //var id_livro = document.getElementById('id_livro').value;
 
     url = "/alunos/emprestimos/devolver_livro";
