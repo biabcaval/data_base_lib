@@ -86,7 +86,7 @@ def search():
         print(f"Resultado da pesquisa: {livro}")
         cursor.close()
         # Retorna os dados para o template
-        return render_template('search.html', data=livro)
+        return render_template('tela_adm_search.html', data=livro)
 
     except Exception as e:
         print(f"Erro ao buscar o livro: {e}")

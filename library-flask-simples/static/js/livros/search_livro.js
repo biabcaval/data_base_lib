@@ -3,7 +3,7 @@ function search() {
     console.log('Função search chamada');
     let livro = document.getElementById('searchInput').value;
     console.log('Livro:', livro);
-    fetch('/api/search_livro?nome_livro=' + encodeURIComponent(livro),{
+    fetch('/admin/api/search_livro?nome_livro=' + encodeURIComponent(livro),{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
