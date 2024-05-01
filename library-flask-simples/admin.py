@@ -18,18 +18,17 @@ conn = get_db()
 
 #@admin_routes.route('/exibir_tela_admin', methods=['POST'])
 
-@admin_routes.route('/', methods=['POST'])
+@admin_routes.route('/', methods=['GET'])
 def exibir_tela_livro_adm():
 
     cursor = conn.cursor(dictionary=True)
     query = 'SELECT * FROM livros'
     cursor.execute(query)
     data = cursor.fetchall()
-    cursor.execute(query)
     cursor.close()
     return render_template('tela_adm_livros.html',data=data) #table html
 
-@admin_routes.route('/emprestimos', methods=['POST'])
+@admin_routes.route('/emprestimos', methods=['GET'])
 def exibir_tela_emprest_adm():
     cursor = conn.cursor(dictionary=True)
     query = 'SELECT * FROM emprestimos'

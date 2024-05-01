@@ -16,7 +16,7 @@ auth_routes = Blueprint('auth_routes', __name__, static_folder='static', templat
 conn = get_db()
 
 
-def create_view_aluno(matricula):
+'''def create_view_aluno(matricula):
     cursor = conn.cursor()
     query_ViewAlunos = 'CREATE VIEW aluno_{} AS SELECT * FROM alunos WHERE matricula = %s'.format(matricula)
     cursor.execute(query_ViewAlunos, (matricula,))
@@ -25,30 +25,26 @@ def create_view_aluno(matricula):
     cursor.execute(query_ViewEmprestimos, (matricula,))
 
     conn.commit()
-    cursor.close()
+    cursor.close()'''
 
 ##mostrar a pagina de login
 @auth_routes.get('/')
 def exibir_login(): 
-    return render_template('tela_aluno_livros.html')
+    return render_template('tela_login.html')
 
 @auth_routes.route('/', methods=['POST'])
 def login():
     matricula = request.form.get('matricula')
     senha = request.form.get('senha')
-    type_user = request.form.get('type_user')
+    checked = request.form.get('type_user') 
+    print(checked) #se on vai pra adm, se None vai pra aluno
 
-    if type_user == 'Adm':
-        cursor = conn.cursor(dictionary=True)
-
-        query = 'SELECT * FROM admin WHERE matricula = %s AND senha = %s'
-        cursor.execute(query, (matricula, senha))
-        admin = cursor.fetchone()
-
-        if admin:
+    if checked:#Adm
+        if matricula == 'admin' and senha == 'admin':
             session['matricula'] = matricula
-            return redirect(url_for('admin_routes.exibir_tela_admin'))
-    else:     
+            flash('Login efetuado com sucesso!')
+            return redirect(url_for('admin_routes.exibir_tela_livro_adm'))
+    else:#para aluno
         # Verifica se os campos de matrícula e senha foram enviados
         if matricula and senha:
             cursor = conn.cursor(dictionary=True)
@@ -59,8 +55,9 @@ def login():
 
             if aluno:
                 session['matricula'] = matricula
-                create_view_aluno(matricula)
-                return redirect(url_for('alunos.exibir_tela_aluno'))
+                #create_view_aluno(matricula)
+                flash('Login efetuado com sucesso!')
+                return redirect(url_for('alunos_routes.exibir_tela_aluno'))
 
         else:
             flash('Matrícula ou senha inválidos')

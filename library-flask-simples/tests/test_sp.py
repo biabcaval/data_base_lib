@@ -10,19 +10,14 @@ from db import get_db
 # Obtém a conexão com o banco de dados
 conn = get_db()
 
-id_emprestimo = random.randint(1000, 9999)
-id_livro = 54
-matricula = 202202015
-data_emprestimo = date.today()
-data_prevista_devolucao = data_emprestimo + timedelta(days=7)
+id_emprestimo = (random.randint(10000, 99999))
+matricula = 202403031
+id_livro = 21
 
-cursor = conn.cursor()
 
-titulo = 'titulo'
-autor = 'autor'
-genero = 'genero'
-
-cursor.callproc("biblioteca.add_livro", (titulo, autor, genero))
-conn.commit()
-cursor.close()
-print('Livro adicionado com sucesso!')
+args =(id_emprestimo,matricula,id_livro,0)
+with conn.cursor() as cursor:
+    result_args = cursor.callproc('realizar_emprestimo', args)
+    conn.commit()
+    msg = result_args[3]
+    print(msg)

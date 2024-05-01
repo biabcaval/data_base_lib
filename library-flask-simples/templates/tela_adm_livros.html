@@ -3,29 +3,43 @@
 
 <head>
   <title>Biblioteca</title>
-   
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-  <link rel="stylesheet" href="static\css\style.css">
+  <link rel="stylesheet" href="static/css/style.css">
 </head>
 
-<body>
-  <div class="header-container">
-    <h1 class="HEADER">Biblioteca</h1>
-  </div>
+<body>    
+  <div class="header-container" style="padding: 2%;">
+      <button class="btn btn-neutral" style="float: right;">Log out</button>
+      <h1 class="HEADER">Biblioteca</h1>
+    </div>
   <div class="main-background">
+
 
     <div class="table_frame" >
 
       <div class="table_border">
 
-        <div class="h1_repbtn_container" style="display: flex;">     
+        
+        <div class="h1_repbtn_container" style="display: flex;">
+              
           <details class="dropdown">
             <summary class="m-1 btn btn-neutral">Tabelas</summary>
             <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-              <li><a>Livros</a></li>
-              <li><a>Empréstimos</a></li>
+            <li>
+            <form action="{{ url_for('admin_routes.exibir_tela_livro_adm') }}" method="GET">
+                <button type="submit">Livros</button>  
+            </form>
+          </li>
+            <li>
+
+            </li>
+            <li>
+                <form action="{{ url_for('admin_routes.exibir_tela_emprest_adm') }}" method="GET">
+                    <button type="submit">Empréstimos</button>
+                </form>
+            </li>
             </ul>
           </details>
           <button class="btn btn-ghost" onclick = "gerar_relatorio();" style="margin-bottom: 25px;"><svg xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="1.8rem" viewBox="0 0 24 24"><path fill="#2B3440" d="m20 8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM9 19H7v-9h2zm4 0h-2v-6h2zm4 0h-2v-3h2zM14 9h-1V4l5 5z"/></svg>
@@ -147,11 +161,11 @@
   <p>No results found.</p>
   {% endif %}
 
-  <script src="static\js\search.js"></script>
-  <script src="static\js\delete.js"></script>
-  <script src="static\js\update.js"></script>
-  <script src="static\js\adicionar_livro.js"></script>
-  <script src="static\js\relatorio.js"></script>
+  <script src="static\js\livros\search.js"></script>
+  <script src="static\js\livros\delete.js"></script>
+  <script src="static\js\livros\update.js"></script>
+  <script src="static\js\livros\adicionar_livro.js"></script>
+  <script src="static\js\livros\relatorio.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,25 @@
+<thead>
+
+    <tr>
+      <th scope="col/" style="color: black;">id_livro</th>
+      <th scope="col" style="color: black;">Autor</th>
+      <th scope="col"style="color: black;">Título</th>
+      <th scope="col"style="color: black;">Gênero</th>
+      <th scope="col"style="color: black;">Tools</th>
+  
+    </tr>
+  </thead>
+  
+  {% for rows in data %}
+  
+  <tr>
+      <td>{{rows.id_livro}}</td>
+      <td>{{rows.autor}}</td>
+      <td>{{rows.titulo}}</td>
+      <td>{{rows.genero}}</td>
+      <td>
+        </td>
+  </tr>
+  
+  {% endfor %}
+  

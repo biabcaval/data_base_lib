@@ -4,6 +4,7 @@
         <title>Aluno Livros</title>
         <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
         <script src="https://cdn.tailwindcss.com"></script>
+        <script src = "static\js\emprestimos\fazer_emprestimo.js"></script>
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
         <link rel="stylesheet" href="static\css\style.css">
     </head>
@@ -20,25 +21,24 @@
                             <summary class="m-1 btn btn-neutral">Tabelas</summary>
                             <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                               <li>
-                                <form action="{{ url_for('alunos_routes.exibir_tela_aluno') }}" method="post">
+                                <form action="{{ url_for('alunos_routes.exibir_tela_aluno') }}" method="GET">
                                     <button type="submit">Dados</button>
                                 </form>
                             </li>
                            
                             <li>
-                                <form action="{{ url_for('alunos_routes.exibir_tela_livros_aluno') }}" method="post">
+                                <form action="{{ url_for('alunos_routes.exibir_tela_livros_aluno') }}" method="GET">
                                 <button type="submit">Livros</button>  
                             </form>
                             </li>
                             <li>
-                                <form action="{{ url_for('alunos_routes.exibir_tela_emprest_aluno') }}" method="post">
+                                <form action="{{ url_for('alunos_routes.exibir_tela_emprest_aluno') }}" method="GET">
                                     <button type="submit">Empréstimos</button>
                                 </form>
                             </li>
                             </ul>
                           </details>
-                          <button type="button" class="btn btn-ghost" style="display: flex;float: right; gap: 30rem;" data-target="addLivroModal" data-open="addLivroModal" id="btnAbrirModal">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="1.8rem" viewBox="0 0 24 24"><path fill="#2B3440" d="M13 19c0 1.1.3 2.12.81 3H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h1v7l2.5-1.5L12 9V2h6a2 2 0 0 1 2 2v9.09c-.33-.05-.66-.09-1-.09c-3.31 0-6 2.69-6 6m7-1v-3h-2v3h-3v2h3v3h2v-3h3v-2z"/></svg></button> 
+                          
                         </div>        
                         <div class="search_bar">
                           <label class="input input-bordered flex items-center gap-2" style="width: 100%;" >
@@ -61,22 +61,23 @@
                                         <th scope="col">Título</th>
                                         <th scope="col">Gênero</th>
                                         <th scope="col">Disp</th>
-                                        <th scope="col">Tools</th>
+                                        <th scope="col">Fazer empréstimo</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {% for row in data %}
                                     <tr>
-                                        <td>{{ row.id_livro }}</td>
+                                        <td name = 'id_livro' id = 'id_livro'>{{ row.id_livro }}</td>
                                         <td>{{ row.autor }}</td>
                                         <td>{{ row.titulo }}</td>
                                         <td>{{ row.genero }}</td>
                                         <td>{{ row.disponivel }}</td>
                                         <td>
-                                            <form method="POST" action="{{ url_for('alunos_routes.fazer_emprestimo') }}">
-                                                <input type="hidden" name="id_livro" value="{{ row.id_livro }}">
-                                                <button class="button" type="submit">Empréstimo</button>
-                                            </form>
+                                            <!--fazer emprestimo-->
+                                            <button type="button" id="FzrEmp" onclick="fazer_emprestimo('{{ row.id_livro }}')" class="btn btn-ghost" style="display: flex;float: center; gap: 30rem;" >
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="1.8rem" viewBox="0 0 24 24"><path fill="#2B3440" d="M13 19c0 1.1.3 2.12.81 3H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h1v7l2.5-1.5L12 9V2h6a2 2 0 0 1 2 2v9.09c-.33-.05-.66-.09-1-.09c-3.31 0-6 2.69-6 6m7-1v-3h-2v3h-3v2h3v3h2v-3h3v-2z"/>
+                                            </svg></button> 
+
                                         </td>
                                     </tr>
                                     {% endfor %}
