@@ -46,7 +46,11 @@ def exibir_tela_livros_aluno():
 def exibir_tela_emprest_aluno():
     cursor = conn.cursor(dictionary=True)
     matricula = session.get('matricula')
-    query = 'SELECT * FROM emprestimos WHERE id_aluno = %s'
+    query = '''SELECT emprestimos.*, livros.titulo
+    FROM emprestimos
+    JOIN livros ON emprestimos.id_livro = livros.id_livro
+    WHERE emprestimos.id_aluno = %s;'''
+
     cursor.execute(query, (matricula,))
     emprestimos = cursor.fetchall()
     cursor.close()
@@ -93,17 +97,40 @@ def devolver_livro():
     #return redirect(url_for('alunos_routes.exibir_tela_emprest_aluno'))
 
 
-@alunos_routes.route('/livros/pesquisar_livro', methods=['POST'])
+@alunos_routes.route('/livros/pesquisar_livro', methods=['GET'])
 def pesquisar_livro():
+    conn = None
     cursor = None
-    cursor = conn.cursor(dictionary=True)
-    livro = request.form.get('pesquisa')
-    query = 'SELECT * FROM livros WHERE titulo LIKE %s'
-    cursor.execute(query, ('%'+livro+'%',))
-    livros = cursor.fetchall()
-    cursor.close()
-    return render_template('tela_aluno_search_livros.html', livros=livros)
+    try:
+        conn = get_db()
+        cursor = conn.cursor(dictionary=True)
 
+        # Captura o valor de 'nome_livro' do request.args
+        nome_livro = request.args.get('nome_livro')
+
+        # Verifica se 'nome_livro' está vazio ou None
+        if not nome_livro:
+            cursor.execute('SELECT * FROM livros')
+        else:
+            cursor.execute('SELECT * FROM livros WHERE titulo LIKE %s', ("%" + nome_livro + "%",))
+
+        # Obtém os resultados da consulta
+        livro = cursor.fetchall()
+
+        # Depuração: imprime o resultado da consulta
+        print(f"Resultado da pesquisa: {livro}")
+        cursor.close()
+        # Retorna os dados para o template
+        return render_template('tela_aluno_search.html', data=livro)
+
+    except Exception as e:
+        print(f"Erro ao buscar o livro: {e}")
+
+    finally:
+        if cursor:
+            cursor.close()
+
+#@alunos_routes.route('/emprestimos/pesquisar_livro', methods=['GET'])
 
 
 @alunos_routes.route('/logout', methods=['POST'])
