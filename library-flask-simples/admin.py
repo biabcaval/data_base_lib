@@ -9,7 +9,7 @@ from flask import (
     request, 
     redirect, 
     flash,
-    session)
+    session, jsonify)
 
 
 admin_routes = Blueprint('admin_routes', __name__,static_folder='static', template_folder='templates')
@@ -31,7 +31,9 @@ def exibir_tela_livro_adm():
 @admin_routes.route('/emprestimos', methods=['GET'])
 def exibir_tela_emprest_adm():
     cursor = conn.cursor(dictionary=True)
-    query = 'SELECT * FROM emprestimos'
+    query = '''SELECT emprestimos.*, livros.titulo
+    FROM emprestimos
+    JOIN livros ON emprestimos.id_livro = livros.id_livro;'''
     cursor.execute(query)
     emprestimos = cursor.fetchall()
     cursor.close()
@@ -53,10 +55,10 @@ def add_livro():
             (titulo, autor, genero)
         )
         conn.commit()
-        return flash(success=True)
+        return jsonify({'success': True})
     except Exception as e:
         print(f"Erro ao adicionar o livro: {e}")
-        return flash(success=False, error=str(e)), 400  # Retorno de erro com status 400
+        return jsonify({'success': False, 'message': 'Erro ao adicionar o livro'})
     finally:
         if cursor is not None:
             cursor.close()
@@ -111,7 +113,7 @@ def update_livro(id_livro):
         )
         conn.commit()
         print("Livro atualizado com sucesso")
-        return flash(success=True)
+        return jsonify({'success': True})
     except Exception as e:
         print(f"Erro ao atualizar o livro: {e}")
         return flash(success=False, error=str(e)), 400
@@ -124,17 +126,21 @@ def delete():
     cursor = None
     try:
         conn = get_db()
-        cursor = conn.cursor()
+        cursor = conn.cursor(dictionary=True)
         data = request.json
         id_deletado = data['id_deletado']
-        cursor.execute('DELETE FROM livros WHERE id_livro = %s', (id_deletado,))
-        conn.commit()
-        return flash(success=True)
+        print(id_deletado)
+
+        with conn.cursor(dictionary=True) as cursor:
+
+            cursor.execute('DELETE FROM livros WHERE id_livro = %s', (id_deletado,))
+            conn.commit()
+        return jsonify({'success': True})
     except Exception as e:
         print(f"Erro ao deletar o livro: {e}")
-        return flash(success=False, error=str(e)), 400
-    finally:
-        cursor.close()
+        return jsonify({'success': False})
+
+
 
 @admin_routes.get('/api/gerar_relatorio')
 def gerar_relatorio():

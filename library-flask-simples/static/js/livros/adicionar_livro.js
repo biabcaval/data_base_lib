@@ -14,7 +14,7 @@ function enviarFormulario() {
     };
     console.log(data);
 
-    fetch('/api/adicionar_livro', {
+    fetch('/admin/api/adicionar_livro', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

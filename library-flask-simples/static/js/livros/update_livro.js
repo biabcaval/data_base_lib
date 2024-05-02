@@ -15,7 +15,7 @@ function updateLivro() {
   var formData = new FormData(form);
   var idLivro = formData.get('id_livro');
 
-  fetch('/api/update_livro/' + idLivro, {
+  fetch('/admin/api/update_livro/' + idLivro, {
     method: 'PUT',
     body: formData,
 

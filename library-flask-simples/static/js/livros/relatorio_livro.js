@@ -1,5 +1,5 @@
 function gerar_relatorio() {
-    fetch('/api/gerar_relatorio')
+    fetch('/admin/api/gerar_relatorio')
     .then(response => response.json())
     .then(data => {
         console.log(data);
