@@ -91,7 +91,7 @@ def devolver_livro():
     with conn.cursor(dictionary=True) as cursor:
         cursor.callproc('devolucao', (id_emprestimo,id_livro))
         conn.commit()
-        mensagem = 'Devolução realizada com sucesso!'
+        mensagem = 'Devolucao realizada com sucesso!'
         return jsonify({'mensagem': mensagem})
     
     #return redirect(url_for('alunos_routes.exibir_tela_emprest_aluno'))
