@@ -16,3 +16,6 @@ Nosso projeto é uma aplicação web de uma biblioteca com banco de dados MySQL,
 [CRUD using flask and mysql](https://www.loginworks.com/blogs/making-web-application-crud-using-flask-and-mysql/). Esse link tem umas coisas meio desatualizadas mas dá um norte legal.
 
 [Guia Bom do Planet Scale](https://planetscale.com/learn/video-courses/mysql-for-python-developers/building-a-flask-app-with-mysql/setting-up-the-flask-project?autoplay=1): VEJA ESSE. ARQUIVO ATUAL PELO QUAL ESTOU ME BASEANDO
+
+## Possíveis Melhorias
+1. Adicionar um Trigger na parte de Empréstimos
