@@ -1,5 +1,14 @@
 # 📕 Projeto de Banco de Dados - Biblioteca
 
+![Imagem_Biblio](library-flask/Biblioteca-1.png)
+
+![aluno_dados](library-flask/pdf2png/Chuu-1.png)
+
+![livros](library-flask/pdf2png/Aluno_Livros-1.png)
+
+![emprestimos](library-flask/pdf2png/Devolucao-1.png)
+
+
 ## About the project
 Nosso projeto é uma aplicação web de uma biblioteca com banco de dados MySQL, focando em operações CRUD e utilizando dados de 2 tabelas.
 
